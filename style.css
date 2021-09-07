@@ -1,0 +1,118 @@
+#cards {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  width: 85%;
+}
+
+.card {
+  /* flex-basis: 控制flex item在容器內所佔的寬度 */
+  /* flex-grow:  分配flex-basis之後的空間，此處設為0代表不要分配剩餘空間，因為希望視窗過大時留白*/
+  /* flex-shrink 視窗過小時，flex item需要縮小多少空間，這邊設為1代表所有flex item等比例縮小*/ 
+  flex: 7% 1 1;
+  /* 依視窗的寬度等比例變化 */
+  height: 8vw;
+  border: 2px solid #e0e0e0;
+  margin: 2px;
+  box-sizing: border-box;
+  /* 卡片內部元素排版 */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.card img {
+  max-width: 30px;
+  /* align-self can override the original setting of align-items value */
+  align-self: center;
+}
+
+.card p {
+  margin: 3px;
+  font-size: 15px;
+}
+
+/* last-child指的是在同一個階層的同類元素中，選出最後面的元素 */
+.card p:last-child {
+  transform: rotate(180deg);
+}
+
+/* 牌背樣式 */
+.back {
+  background-image: url('https://assets-lighthouse.alphacamp.co/uploads/image/file/9222/ExportedContentImage_00.png');
+  background-size: cover;
+}
+
+/* 兩張牌相同時 */
+.paired {
+  background: #dae0e3;
+}
+
+/* Header */
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin: 0 auto;
+  width: 85%;
+}
+
+header .title {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+header .title img {
+  max-width: 3em;
+}
+
+header .title h2 {
+  font-family: 'Nunito', sans-serif;
+  padding-left: 0.5em;
+}
+
+header .score {
+  font-family: 'Nunito', sans-serif;
+  margin: 0;
+  color: #6c90ac;
+}
+header .tried {
+  font-family: 'Nunito', sans-serif;
+  margin-top: 0;
+}
+
+/* 配對失敗的動畫特效 */
+.wrong {
+  animation-name: wrongAnimation;
+  animation-duration: 0.2s;
+  animation-iteration-count: 5;
+}
+/* 用 @keyframes 指定了一個叫 wrongAnimation 的動畫流程，在 keyframes 裡可以用 from 和 to 來指定動畫漸變起點/終點 */
+@keyframes wrongAnimation {
+  to {
+    border: 2px solid #ffd54f;
+  } 
+}
+
+/* 遊戲結束畫面 */
+.completed {
+  position: absolute;
+  z-index: 999;
+  top: 35vh;
+  width: 100vw;
+  background-color: RGBA(232, 246, 254, 0.8);
+  padding: 50px 0;
+}
+
+.completed p {
+  font-size: 1.5em;
+  text-align: center;
+  margin: 0
+}
+
+.completed p:first-child {
+  font-size: 3em;
+  font-weight: 700;
+  color: #758d9a;
+}
